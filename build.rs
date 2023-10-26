@@ -10,7 +10,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let man = clap_mangen::Man::new(cmd);
 
     let mut buffer: Vec<u8> = Default::default();
-    man.render(&mut buffer)?;
+    man.render(&mut buffer)?; // man contents -> buffer -> file
 
     let output_dir = Path::new("target/man");
     create_dir_all(output_dir)?;
