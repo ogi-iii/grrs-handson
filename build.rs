@@ -1,3 +1,5 @@
+// 依存関係はCargo.toml内の[build-dependencies]に記載
+
 use std::{fs::{self, create_dir_all}, path::Path, error::Error};
 
 use clap::CommandFactory;
