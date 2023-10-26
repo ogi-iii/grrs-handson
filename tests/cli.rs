@@ -1,3 +1,5 @@
+// 依存関係はCargo.toml内の[dev-dependencies]に記載
+
 use std::{error::Error, process::Command};
 
 use assert_cmd::prelude::*;
