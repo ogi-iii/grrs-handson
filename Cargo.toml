@@ -10,6 +10,9 @@ anyhow = "1.0"
 clap = { version = "4.0", features = ["derive"] }
 log = "0.4"
 env_logger = "0.10.0"
+serde = "1.0"
+serde_derive = "1.0"
+confy = { version = "0.5.1", features = ["yaml_conf"], default-features = false }
 
 [dev-dependencies]
 assert_cmd = "2.0.12"
