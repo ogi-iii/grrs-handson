@@ -14,3 +14,15 @@ cargo run -- {pattern} {filepath}
 ```bash
 cargo run --help
 ```
+
+### Build
+
+```bash
+cargo build
+```
+
+#### See Manual
+
+```bash
+man ./target/man/grrs.1
+```

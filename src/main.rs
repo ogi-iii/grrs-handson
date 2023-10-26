@@ -1,32 +1,9 @@
 use log::debug;
-use serde_derive::{Serialize, Deserialize};
-
-use std::{path::PathBuf, fs::File, io::{BufReader, stdout, stdin, IsTerminal, ErrorKind}, borrow::Cow};
-
+use std::{fs::File, io::{BufReader, stdout, stdin, IsTerminal, ErrorKind}};
 use anyhow::{Context, Result};
 use clap::{CommandFactory, Parser};
 
-/// Search for a pattern in a file and display the lines that contains it.
-#[derive(Debug, Parser, Serialize, Deserialize)]
-#[command(arg_required_else_help = true)] // 必須引数の未指定時にヘルプを出力
-struct Cli {
-    /// The pattern to look for
-    pattern: String,
-    /// The path to the file to read, use - to read from stdin (must not be a tty)
-    path: PathBuf
-}
-
-impl Cli {
-    fn get_path_string(&self) -> Cow<'_, str> {
-        self.path.to_string_lossy()
-    }
-}
-
-impl Default for Cli {
-    fn default() -> Self {
-        Cli { pattern: String::new(), path: PathBuf::new() }
-    }
-}
+use grrs::Cli;
 
 // fn main() -> Result<(), Box<dyn std::error::Error>> {
 fn main() -> Result<()> { // 異常時にはErrorトレイトを実装したエラーを返す: Result<T, E = Error>
