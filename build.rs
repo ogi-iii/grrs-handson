@@ -4,11 +4,11 @@ use std::{fs::{self, create_dir_all}, path::Path, error::Error};
 
 use clap::CommandFactory;
 
-#[path ="src/lib.rs"]
-mod lib;
+#[path ="src/module/parser.rs"]
+mod parser;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let cmd = lib::Cli::command();
+    let cmd = parser::Cli::command();
     let man = clap_mangen::Man::new(cmd);
 
     let mut buffer: Vec<u8> = Default::default();

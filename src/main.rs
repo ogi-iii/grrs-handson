@@ -3,7 +3,7 @@ use std::{fs::File, io::{BufReader, stdout, stdin, IsTerminal, ErrorKind}};
 use anyhow::{Context, Result};
 use clap::{CommandFactory, Parser};
 
-use grrs::Cli;
+use grrs::module::parser::Cli;
 
 // fn main() -> Result<(), Box<dyn std::error::Error>> {
 fn main() -> Result<()> { // 異常時にはErrorトレイトを実装したエラーを返す: Result<T, E = Error>
