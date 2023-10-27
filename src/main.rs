@@ -4,6 +4,7 @@ use anyhow::{Context, Result};
 use clap::{CommandFactory, Parser};
 
 use grrs::module::parser::Cli;
+use grrs::module::matcher::find_matches;
 
 // fn main() -> Result<(), Box<dyn std::error::Error>> {
 fn main() -> Result<()> { // 異常時にはErrorトレイトを実装したエラーを返す: Result<T, E = Error>
@@ -26,7 +27,7 @@ fn main() -> Result<()> { // 異常時にはErrorトレイトを実装したエ�
             return Err(anyhow::Error::from(std::io::Error::from(ErrorKind::InvalidInput)));
         }
         // 標準入力から文字列を探索する
-        return grrs::find_matches(stdin().lock(), &args.pattern, &mut stdout());
+        return find_matches(stdin().lock(), &args.pattern, &mut stdout());
     }
 
     let file = File::open(&args.path)
@@ -34,5 +35,5 @@ fn main() -> Result<()> { // 異常時にはErrorトレイトを実装したエ�
     let file_buffer = BufReader::new(file);
 
     // モジュールを利用: 引数でパスを指定されたファイルから文字列を探索する
-    return grrs::find_matches(file_buffer, &args.pattern, &mut stdout())
+    return find_matches(file_buffer, &args.pattern, &mut stdout())
 }
